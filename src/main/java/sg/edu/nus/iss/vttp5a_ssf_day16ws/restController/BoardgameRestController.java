@@ -1,6 +1,5 @@
 package sg.edu.nus.iss.vttp5a_ssf_day16ws.restController;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import sg.edu.nus.iss.vttp5a_ssf_day16ws.constants.Constant;
-import sg.edu.nus.iss.vttp5a_ssf_day16ws.model.Boardgame;
 import sg.edu.nus.iss.vttp5a_ssf_day16ws.service.BoardgameRestService;
 
 @RestController
@@ -34,8 +32,7 @@ public class BoardgameRestController {
                 .add("insert_count", 1)
                 .add("id", Constant.redisBoardgameKey)
                 .build();
-
-        List<Boardgame> boardgamesList = boardgameRestService.allBoardgames();
+        boardgameRestService.allBoardgames();
         ResponseEntity<String> res = ResponseEntity.status(HttpStatusCode.valueOf(201)).body(jObject.toString());
         // Use ResponseEntity<String>!
         return res;
